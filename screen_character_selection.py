@@ -42,12 +42,15 @@ class Screen_CharacterSelection (tkinter.Frame):
         '''
         self.character_index = tkinter.StringVar()
         self.character_index.set(None)
-        
+
         #
         # TO DO
         #
-       
- 
+        tkinter.Label(self,font = ("Helvetica",20)).grid(row=0,column=0,columnspan=3,sticky=tkinter.N)
+        tkinter.Label(self,text = "Hit Points", font = ("Helvetica",20)).grid(row=1,column=2,columnspan=3,sticky=tkinter.N)
+        tkinter.Label(self,text = "Dexterity", font = ("Helvetica",20)).grid(row=1,column=3,columnspan=3,sticky=tkinter.N)
+        tkinter.Label(self,text = "Strength", font = ("Helvetica",20)).grid(row=1,column=4,columnspan=3,sticky=tkinter.N)
+
     def selected_clicked(self):
         ''' This method is to be called when the "Character Selected!" button is clicked. 
             Notice that it passes self.character_index back to the callback method. '''         
