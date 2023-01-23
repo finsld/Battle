@@ -51,7 +51,26 @@ class Screen_CharacterSelection (tkinter.Frame):
         tkinter.Label(self,text = "Dexterity", font = ("Helvetica",20)).grid(row=1,column=3,columnspan=3,sticky=tkinter.N)
         tkinter.Label(self,text = "Strength", font = ("Helvetica",20)).grid(row=1,column=4,columnspan=3,sticky=tkinter.N)
 
+        row_num = 2
+        char_num = 0
+        for char in self.roster.character_list:
+            imageElf = tkinter.PhotoImage(file = "images/"+char.small_image)
+            tkinter.Radiobutton(self,text=char.name,variable=self.character,value=char.num,font=("Helvetica",16)).grid(row=row_num,column=0,sticky=tkinter.N)
+            self.callback_on_selected(self.character_index.get())
+            lbl = tkinter.Label(self,image=imageElf)
+            lbl.x = imageElf
+            lbl.grid(row=row_num,column=1,sticky=tkinter.W)
+
+            tkinter.Label(self,text=str(char.hit_points),font=("Helvetica",16),width=10).grid(row=row_num,column=2,sticky=tkinter.W)
+            tkinter.Label(self,text=str(char.dexterity),font=("Helvetica",16),width=10).grid(row=row_num,column=2,sticky=tkinter.W)
+            tkinter.Label(self,text=str(char.strength),font=("Helvetica",16),width=10).grid(row=row_num,column=2,sticky=tkinter.W)
+            
+
+            row_num += 1
+            char_num += 1
+        tkinter.Button(self,text="Character Selection",fg="Red",bg="Black",font=("Helvetica",16)).grid(row=row_num,column=2,columnspan=3,sticky=tkinter.N)
+
     def selected_clicked(self):
         ''' This method is to be called when the "Character Selected!" button is clicked. 
             Notice that it passes self.character_index back to the callback method. '''         
-        self.callback_on_selected(self.character_index.get())
+    
